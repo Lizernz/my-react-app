@@ -1,8 +1,26 @@
-import React from "react";
+import React, { useState } from "react";
+import axios from "axios";
 import "./Weather.css";
 
  function Weather() {
-  return (
+const [ready, setReady] = useState(false);
+const [weatherData, setWeatherData] = useState({});
+function handleResponse (response) {
+  console.log(response.data);
+  setWeatherData({
+temperature:response.data.main.temp,
+humidity:response.data.main.humidity,
+wind: response.data.wind.speed,
+city: response.data.name,
+description:response.data.weather[0].description,
+iconUrl: "https://w7.pngwing.com/pngs/530/127/png-transparent-weather-forecasting-national-weather-service-weather-radar-weather-atmosphere-cloud-weather-forecasting-thumbnail.png",
+  });
+
+  setReady(true);
+}
+
+if (ready) {
+ return (
     <div className="weather">
       <form>
         <div className="row">
@@ -21,33 +39,45 @@ import "./Weather.css";
         </div>
         </div>
       </form>
-      <h1>New York</h1>
+      <h1>{weatherData.city}</h1>
       <ul>
         <li>Wednesday 07:00</li>
-        <li>Mostly cloudy</li>
+        <li>{weatherData.description}</li>
       </ul>
       <div className="row mt-3">
         <div className="col-6">
         <div className="clearfix">
       <img
-      src="https://atlas-content-cdn.pixelsquid.com/stock-images/weather-forecast-thunderstorm-storm-N4M7XQA-600.jpg"
-      alt="Mostly cloudy"
+      src={weatherData.iconUrl}
+      alt={weatherData.description}
       /> 
-     <span className="temperature">6</span>
+     <span className="temperature">{Math.round(weatherData.temperature)}</span>
      <span className="unit">°C</span>
      </div>
 </div>
     <div className="col-6">
       <ul>
-        <li>Precipitation: 15%</li>
-        <li>Humidity: 72%</li>
-        <li>Wind: 13 km/h</li>
+        
+        <li>Humidity: {weatherData.humidity}</li>
+        <li>wind: {weatherData.wind}km/h</li>
       </ul>
       </div>
 
       </div>
       </div>
-  )  
+  );
+
+ 
+} else {
+
+const apikey = "1de043300tfb174cf1a30ef403a9aobc";
+let city = "New York";
+let apiUrl = 'https://api.shecodes.io/weather/v1/current?query=${city}&key=${apikey}&units=metric';
+axios.get(apiUrl).then(handleResponse);
+
+return "Loading...";
 }
+}
+ 
 
 export default Weather;
