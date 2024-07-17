@@ -16,7 +16,7 @@ function App() {
       rel="noopener noreferrer"
       >
          open-sourced on GitHub
-      </a> and on 
+      </a> and on  
       <a href="https://lizernz-react-app.netlify.app/"
       target="_blank"
       rel="noopener noreferrer"
