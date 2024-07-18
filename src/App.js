@@ -11,7 +11,11 @@ function App() {
    <Weather defaultCity="New York" />
     <footer>
       This project was coded by {""}
-      <a href="https://ww.Elizabeth.com/" target="_blank"> Elizabeth Lavender </a>{""}
+      <a href="https://ww.Elizabeth.com/" target="_blank"
+      rel="noopener noreferrer"
+      > 
+      Elizabeth Lavender
+       </a>{""}
       and is {""}<a href="https://github.com/Lizernz/my-react-app"
       target="_blank"
       rel="noopener noreferrer"
