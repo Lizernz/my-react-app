@@ -15,19 +15,13 @@ axios.get(apiUrl)
 .catch(handleError);
 }, [city]);
 
-
-
 useEffect(() => {
   search();
 }, [search]);
 
-
 function handleError(error) {
   console.error("Error fetching weather data:", error);
- 
 }
-
-
 
 function handleResponse(response) {
   console.log(response.data); 
@@ -43,8 +37,6 @@ function handleResponse(response) {
   });
 }
 
-
-
 function handleSubmit(event) {
   event.preventDefault();
   search();
@@ -53,8 +45,6 @@ function handleSubmit(event) {
 function handleCityChange (event) {
 setCity(event.target.value);
 }
-
-   
 
 if (weatherData.ready) {
  return (
@@ -79,7 +69,7 @@ if (weatherData.ready) {
         </div>
         </div>
       </form>
-      <WeatherInfo info={weatherData} />
+      <WeatherInfo data={weatherData} />
       </div> 
   );
 } else {
