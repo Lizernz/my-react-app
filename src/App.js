@@ -8,10 +8,11 @@ function App() {
       <div className="container" >
     <h1>Weather App</h1>
 
-   <Weather />
+   <Weather defaultCity="New York" />
     <footer>
-      This project was coded by Elizabeth Lavender
-      and is <a href="https://github.com/Lizernz/my-react-app"
+      This project was coded by {""}
+      <a href="https://ww.Elizabeth.com/" target="_blank"> Elizabeth Lavender </a>{""}
+      and is {""}<a href="https://github.com/Lizernz/my-react-app"
       target="_blank"
       rel="noopener noreferrer"
       >

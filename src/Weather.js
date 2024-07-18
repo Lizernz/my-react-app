@@ -2,24 +2,27 @@ import React, { useState } from "react";
 import axios from "axios";
 import "./Weather.css";
 
- function Weather() {
-const [ready, setReady] = useState(false);
+ function Weather(props) {
+const [ready, setReady] = useState({ready: false});
 const [weatherData, setWeatherData] = useState({});
-function handleResponse (response) {
+
+function handleResponse(response) {
   console.log(response.data);
-  setWeatherData({
+ setWeatherData({
+ready: true,
 temperature:response.data.main.temp,
 humidity:response.data.main.humidity,
 wind: response.data.wind.speed,
 city: response.data.name,
+date: "Wednesday 07:00",
 description:response.data.weather[0].description,
-iconUrl: "https://w7.pngwing.com/pngs/530/127/png-transparent-weather-forecasting-national-weather-service-weather-radar-weather-atmosphere-cloud-weather-forecasting-thumbnail.png",
+iconUrl:
+ "https://w7.pngwing.com/pngs/530/127/png-transparent-weather-forecasting-national-weather-service-weather-radar-weather-atmosphere-cloud-weather-forecasting-thumbnail.png",
   });
-
-  setReady(true);
 }
 
-if (ready) {
+
+if (weatherData.ready) {
  return (
     <div className="weather">
       <form>
@@ -41,8 +44,8 @@ if (ready) {
       </form>
       <h1>{weatherData.city}</h1>
       <ul>
-        <li>Wednesday 07:00</li>
-        <li>{weatherData.description}</li>
+        <li>{weatherData.date}</li>
+        <li class="text-capitalize">{weatherData.description}</li>
       </ul>
       <div className="row mt-3">
         <div className="col-6">
@@ -70,9 +73,9 @@ if (ready) {
  
 } else {
 
-const apikey = "1de043300tfb174cf1a30ef403a9aobc";
-let city = "New York";
-let apiUrl = 'https://api.shecodes.io/weather/v1/current?query=${city}&key=${apikey}&units=metric';
+const apiKey = "63214c4281922e3bb72fdf12dada7734";
+
+let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${props.defaultCity}&key=${apiKey}&units=metric`;
 axios.get(apiUrl).then(handleResponse);
 
 return "Loading...";
