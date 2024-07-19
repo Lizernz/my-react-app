@@ -8,8 +8,8 @@ import "./Weather.css";
 const [weatherData, setWeatherData] = useState({ready: false});
 
 const search = useCallback(() => {
- const apiKey = "ac209dae1f283fb332a5bb7f50b0f468";
-const apiUrl = `https://api.shecodes.io/weather/v1/forecast?query=${city}&key=${apiKey}&units=metric`;
+ const apiKey = "fbef01f4et1b02o0d25c27210a43ef3f";
+const apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=metric`;
 axios.get(apiUrl)
 .then(handleResponse)
 .catch(handleError);
@@ -27,13 +27,13 @@ function handleResponse(response) {
   console.log(response.data); 
   setWeatherData({
     ready: true,
-    temperature: response.data.main.temp,
-    humidity: response.data.main.humidity,
+    temperature: response.data.temperature.current,
+    humidity: response.data.temperature.humidity,
     wind: response.data.wind.speed,
-    city: response.data.name,
-    date: new Date(response.data.dt * 1000),
-    description: response.data.weather[0].description,
-    icon: response.data.weather[0].icon,
+    city: response.data.city,
+    date: new Date(response.data.time * 1000),
+    description: response.data.condition.description,
+    icon: response.data.condition.icon,
   });
 }
 

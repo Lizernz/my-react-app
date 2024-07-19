@@ -50,3 +50,15 @@
     line-height: 1;
 
 }
+.weatherInfo {
+    margin-top: 20px;
+  }
+  
+  .weatherInfo .clearfix {
+    display: flex;
+    align-items: center;
+  }
+  
+  .weatherInfo .temperature {
+    margin-left: 10px;
+  }
