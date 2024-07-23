@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useCallback } from "react";
 import WeatherInfo from "./WeatherInfo";
+import WeatherForecast from "./WeatherForecast"
 import axios from "axios";
 import "./Weather.css";
 
@@ -10,6 +11,8 @@ const [weatherData, setWeatherData] = useState({ready: false});
 const search = useCallback(() => {
  const apiKey = "fbef01f4et1b02o0d25c27210a43ef3f";
 const apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=metric`;
+
+
 axios.get(apiUrl)
 .then(handleResponse)
 .catch(handleError);
@@ -27,6 +30,7 @@ function handleResponse(response) {
   console.log(response.data); 
   setWeatherData({
     ready: true,
+    coordinates: response.data.coordinates,
     temperature: response.data.temperature.current,
     humidity: response.data.temperature.humidity,
     wind: response.data.wind.speed,
@@ -70,6 +74,7 @@ if (weatherData.ready) {
         </div>
       </form>
       <WeatherInfo data={weatherData} />
+      <WeatherForecast coordinates={weatherData.coordinates}/>
       </div> 
   );
 } else {

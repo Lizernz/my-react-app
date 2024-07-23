@@ -19,7 +19,7 @@ function WeatherInfo(props) {
          <div className="clearfix" >
           
 
-<WeatherIcon code={props.data.icon} 
+<WeatherIcon code={props.data.icon} size={52}
 
  />
 
