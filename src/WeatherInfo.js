@@ -19,20 +19,13 @@ function WeatherInfo(props) {
          <div className="clearfix" >
           
 
-<WeatherIcon code={props.data.icon} size={52}
-
- />
-
-
-<WeatherTemperature  celsius={props.data.temperature}
-
-/>
+<WeatherIcon code={props.data.icon} size={52} />
+<WeatherTemperature  celsius={props.data.temperature} />
     </div>
      </div>
      
     <div className="col-6">
       <ul>
-        
         <li>Humidity: {props.data.humidity}</li>
         <li>Wind: {props.data.wind} km/h</li>
       </ul>
@@ -40,7 +33,6 @@ function WeatherInfo(props) {
     </div>
     </div>
     );
-
 }
 
 
