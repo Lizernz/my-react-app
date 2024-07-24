@@ -93,5 +93,22 @@ h1 {
     .weather canvas {
         max-width: 60px;
 
+    .container{
+    background-color: pink;
+    box-shadow: inset 0 -3em 3em rgb(0 200 0 / 30%),
+    0 0 0 2px white,
+    0.3em 0.3em 1em rgb(200 0 0 / 60%);
+        }
+
+
+.weather{
+    font-family:arial, sans-serif;
+    color: #878787;
+    border: 1px solid #dadde1;
+    border-radius: 4px;
+    padding: 16px;
+    margin: 30px auto;
+    background-color: rgb(255, 254, 254);
+}
     }
   }
