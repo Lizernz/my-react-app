@@ -74,9 +74,7 @@ h1 {
     margin-left: 10px;
   }
 
-  footer {
-    font-size: 15px;
-  }
+
    
   @media (max-width: 900px) {
     .weatherInfo .clearfix {
